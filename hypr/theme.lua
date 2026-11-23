@@ -5,8 +5,8 @@ return {
     -- Рамка активного окна. Красный конец прежнего градиента лез в кадр
     -- полосой под островом и спорил с чёрно-белой оболочкой; здесь он ничего
     -- не обозначал — просто цвет.
-    active_border = { colors = { "rgba(ffffffff)","rgba(8a8a8aff)" }, angle = 45 },
-    inactive_border = "rgba(2a2a2aaa)",
+    active_border = { colors = { "rgba(9D5F4Bff)", "rgba(0a0a17ff)" }, angle = 45 },
+    inactive_border = "rgba(0a0a17aa)",
     rounding = 12,
     rounding_power = 4.0,
     active_opacity = 1.0,
