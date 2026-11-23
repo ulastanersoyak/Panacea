@@ -130,3 +130,6 @@ if [ -d "$SDDM_DIR" ] && [ -w "$SDDM_DIR" ] && command -v ffmpeg >/dev/null; the
         -frames:v 1 "$SDDM_DIR/sddm-bg.jpg" 2>/dev/null \
         && chmod 644 "$SDDM_DIR/sddm-bg.jpg"
 fi
+
+pkill -x swaybg 2>/dev/null
+setsid swaybg -i "$WALL" -m fill >/dev/null 2>&1 &

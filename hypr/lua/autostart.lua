@@ -1,6 +1,8 @@
 local programs = require("lua.programs")
 
 hl.on("hyprland.start", function ()
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
+  hl.exec_cmd("systemctl --user start hyprland-session.target")
   hl.exec_cmd("foot --server")
 
   local zenBgRule = hl.window_rule({
@@ -27,6 +29,7 @@ hl.on("hyprland.start", function ()
   -- Два агента одновременно зарегистрироваться не могут.
   -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("hyprsunset -t 5000")
+  hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/power_refresh.sh")
   -- автомонтирование флешек и карт: без него раздел «Съёмные»
   -- в проводнике не появится сам
   hl.exec_cmd("udiskie --no-notify --no-tray")
@@ -34,5 +37,6 @@ hl.on("hyprland.start", function ()
   -- на чужой машине жёсткий путь молча не срабатывал, и после перезагрузки
   -- возвращалась тема из theme.conf, положенного установщиком.
   hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/switch_theme.sh --restore")
+  hl.exec_cmd('sh -c \'sleep 1; w=$(grep -m1 "^\\$wallpaper" ~/.config/hypr/wallpaper.conf | cut -d= -f2- | xargs); exec swaybg -i "$w" -m fill\'')
   hl.exec_cmd("cliphist list | tail -n +501 | cliphist delete")
 end)
