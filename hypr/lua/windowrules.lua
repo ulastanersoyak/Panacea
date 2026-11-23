@@ -1,4 +1,12 @@
 hl.window_rule({
+    name   = "share-picker",
+    match  = { class = "hyprland-share-picker" },
+    float  = true,
+    center = true,
+    pin    = true,
+})
+
+hl.window_rule({
     name  = "suppress-maximize-events",
     match = { class = ".*" },
     suppress_event = "maximize",

@@ -1,6 +1,6 @@
 hl.config({
     input = {
-        kb_layout  = "us,ru",
+        kb_layout  = "us,tr",
         kb_variant = ",",
         kb_model   = "",
         -- Alt+Shift переключает раскладку
